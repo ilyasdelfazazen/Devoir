@@ -1,0 +1,100 @@
+#include <iostream>
+using namespace std;
+class NombreComplexe{
+    private:
+        float reel;
+        float imaginaire;
+    public:
+	float setReel();
+	float setImag();
+	float getReel();
+	float getImag();
+	void afficher();
+	static void addition(NombreComplexe value1, NombreComplexe value2);
+	static void soustraction(NombreComplexe value1, NombreComplexe value2);
+	//static void multiplication(NombreComplexe value1, NombreComplexe value2);
+	//static void division(NombreComplexe value1, NombreComplexe value2);
+
+	static void egalite(NombreComplexe value1, NombreComplexe value2);
+	static void opposition(NombreComplexe value1, NombreComplexe value2);
+	NombreComplexe();
+    NombreComplexe(float r,float imag);
+};
+float NombreComplexe::setReel()
+{
+    cout << "Saisir la partie reel: ";
+    cin >> reel;
+    return reel;
+}
+float NombreComplexe::setImag()
+{
+    cout << "Saisir la partie imaginaire: ";
+    cin >> imaginaire;
+    return imaginaire;
+}
+float NombreComplexe::getReel()
+{
+    return reel;
+}
+float NombreComplexe::getImag()
+{
+    return imaginaire;
+}
+void NombreComplexe::afficher(){
+    cout << getReel() << "+" << getImag() << "i"<<endl;
+}
+void NombreComplexe::addition(NombreComplexe value1,NombreComplexe value2)
+{
+    float resultReel;
+    float resultImag;
+    resultReel =value1.getReel() + value2.getReel();
+    resultImag = value1.getImag() + value2.getImag();
+    cout <<"la somme de deux nombres complexe est : "<< resultReel <<"+"<< resultImag <<"i"<<endl;
+}
+
+void NombreComplexe::egalite(NombreComplexe value1, NombreComplexe value2)
+{
+    if ((value1.getReel() == value2.getReel()) && (value1.getImag() == value2.getImag()))
+        cout << "Les deux nombres complexes sont egaux!"<<endl;
+}
+void NombreComplexe::opposition(NombreComplexe value1, NombreComplexe value2)
+{
+    if ((value1.getReel() == value2.getReel()) && (value1.getImag() == value2.getImag())==0)
+        cout << "Les deux nombres complexes sont opposes!" << endl;
+}
+void NombreComplexe::soustraction(NombreComplexe value1, NombreComplexe value2)
+{
+    float resultReel;
+    float resultImag;
+    resultReel = value1.getReel() - value2.getReel();
+    resultImag = value1.getImag() - value2.getImag();
+    cout << "la soustraction de deux nombres complexe est : " << resultReel << "+" << resultImag << "i"<<endl;
+}
+    NombreComplexe::NombreComplexe(float r,float imag):reel(r),imaginaire(imag)
+    {
+    }
+    NombreComplexe::NombreComplexe():reel(5),imaginaire(10)
+    {
+    }
+int main(){
+    NombreComplexe value3(5,10);
+    cout<<"la partie reel est : "<<value3.getReel()<<endl;
+    cout<<"la partie imaginaire est : "<<value3.getImag()<<endl;
+    NombreComplexe value4();
+    cout<<"la partie reel par defaut est : "<<value4.getReel()<<endl;
+    cout<<"la partie imaginaire par defaut est : "<<value4.getImag()<<endl;
+    NombreComplexe value1;
+    value1.setReel();
+    value1.setImag();
+    value1.afficher();
+    NombreComplexe value2;
+    value2.setReel();
+    value2.setImag();
+    value2.afficher();
+    NombreComplexe::addition(value1, value2);
+    NombreComplexe::soustraction(value1, value2);
+    NombreComplexe::egalite(value1, value2);
+    NombreComplexe::opposition(value1, value2);
+
+    return 0;
+}
